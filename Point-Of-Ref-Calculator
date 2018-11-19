@@ -1,0 +1,38 @@
+//This is a simple program written in C that will take two speed values, one of which is the point of reference of an imaginary camera,
+//the other is the apparent speed of an object from the cameras perspective. The program will then calculate the actual speed of the object
+//if it was being viewed from a standstill.
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+int main(void)
+{
+    //Variables for the speed of the point of reference and how fast it looks like the objects are moving.
+
+    float speed;
+    float apparmotion;
+
+    //Two loops to get input. These would be replaced with data from cameras in a proper program.
+
+    do
+    {
+        speed = get_float("Input Speed of Vehicle: \n");
+    }
+    while(speed <= 0);
+
+    do
+    {
+        apparmotion = get_float("Input Apparent Motion of Objects: \n");
+    }
+    while(apparmotion <= -0.1);
+
+    //Basic math operations to get the actual speed calculated.
+
+    apparmotion = apparmotion * -1;
+    speed = speed + apparmotion;
+
+    //Print the actual speed like so.
+
+    printf("The objects in question are moving at %f units per unit. \nPositive values indicate movement in the same direction of sensor, negative values indicate the opposite. \n", speed);
+}
