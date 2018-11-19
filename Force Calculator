@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <cs50.h>
+int main(void)
+{
+    int i;
+    float f;
+    float m;
+    float a;
+    do
+    {
+        i=get_int("Welcome to Fma, the physics calculation program! Input 1 to solve for force, 2 to solve for mass, and 3 to solve for acceleration!\n");
+    }
+    while(i<=0 || i>3);
+
+    if(i==1)
+    {
+        m = get_float("Great! Please input mass:\n");
+        a = get_float("Acceleration please!\n");
+        f=m*a;
+        printf("Alright! Your force is %0.2f newtons!\n", f);
+    }
+    if(i==2)
+    {
+        a = get_float("Great! Please input acceleration:\n");
+        f = get_float("Force please!\n");
+        m=f/a;
+        printf("Alright! Your mass is %0.3f kilograms!\n", m);
+    }
+    if(i==3)
+    {
+        m = get_float("Great! Please input mass:\n");
+        f = get_float("Force please!\n");
+        a=f/m;
+        printf("Alright! Your acceleration is %0.2f meters per second!\n", a);
+    }
+}
