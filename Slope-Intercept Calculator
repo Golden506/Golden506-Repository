@@ -1,0 +1,45 @@
+//Uses special calculations to get a slope-intercept equation from two points on a line.
+
+#include <cs50.h>
+#include <stdio.h>
+#include <math.h>
+
+int main(void)
+{
+    //Lots of varaibles. mathvar is just for storing values during calculations so I can overwrite other variables.
+    float x1;
+    float y1;
+    float x2;
+    float y2;
+    float slope;
+    float intercept;
+    float mathvar;
+
+    printf("This program will calculate a slope intercept equation when given two points on a linear line.\n");
+    //This code gets input for coordinate values.
+    x1 = get_float("Input X value of coordinate 1: \n");
+
+    y1 = get_float("Input y value of coordinate 1: \n");
+
+    x2 = get_float("Input x value of coordinate 2: \n");
+
+    y2 = get_float("Input y value of coordinate 2 \n");
+    //All the math is done here. First it does the slope, then the intercept.
+    mathvar = y2-y1;
+    slope = mathvar;
+    mathvar = x2-x1;
+    slope = slope/mathvar;
+
+    intercept = y1 - slope * x1;
+    //This one prints out the answer. The if-else modifier just fixes issues with it adding negatives and stuff like that. The answer is the same
+    //either way, this just makes it look neater.
+    if(intercept < 0)
+    {
+         printf("y=%fx%f\n", slope, intercept);
+    }
+    else
+    {
+         printf("y=%fx+%f\n", slope, intercept);
+    }
+
+}
