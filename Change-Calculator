@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <math.h>
+
+int main(void)
+{
+
+    float initial;
+    int i;
+    int cint;
+    i=0;
+do
+{
+    initial = get_float("Input Change: \n");
+}
+while(initial<0);
+// This do-while loop uses a get_float operator to get a postive input from the user.
+long c = lround(initial * 100);
+
+cint=c;
+while(c>=25)
+{
+c=c-25;
+i=i+1;
+}
+// Each one of these loops represents using one kind of coin. For this one, every time it runs it adds
+// one coin to the final tally and removes 25 cents from the change owed.
+while(c>=10)
+{
+c=c-10;
+i=i+1;
+}
+// Dime loop, subtracts ten crom change owed.
+while(c>=5)
+{
+c=c-5;
+i=i+1;
+}
+// Nickel loop, subtracts five from change owed.
+while(c>0)
+{
+c=c-1;
+i=i+1;
+}
+// Penny loop, subtracts one from change owed.
+printf("You need %i coins. \n", i);
+//This just prints the number of coins needed.
+}
