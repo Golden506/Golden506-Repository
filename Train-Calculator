@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+{
+    // Right here I'm defining a bunch of variables for use throughout the program. I could probably compress this down into just three or four if
+    // I were to overwrite variables to store different data, but this is just a bit clearer for me and it's not like it's gonna cause any issues.
+    // "i" stands for Intersection Position, "p" stands for Caboose Initial Position, "s" is the speed of the train, "dn" is the distance the caboose
+    // needs to travel to get over the intersection, "t" is the time unitl crossing, and "a" is just the answer.
+    float i;
+    float p;
+    float s;
+    float dn;
+    float t;
+    float a;
+    //This standard printf and the do-while loops prmpts the user for the intersect position, the caboose position, and the speed. Everything needs to
+    //be decimal-compatibal, and as such everything is a float. Rounding errors shouldn't be a problem unless you get to really high values.
+    printf("All input metrics should be in feet.\n");
+    do
+    {
+        i = get_float("Input Intersect Position\n");
+    }
+    while (i < 0);
+    do
+    {
+        p = get_float("Input Caboose Position\n");
+    }
+    while (i < 0);
+    do
+    {
+        s = get_float("Input Train Speed\n");
+    }
+    while (i < 0);
+    //All the actual math is done right here. "dn=i-p" is just saying that the distance between you and the intersection minus the distance
+    //between you and the caboose is how far the caboose needs to travel to get over the intersection. "t=dn/s" is just a standerd
+    // "time equals distance over speed" equation that gets you the time until intersection. Finaly, it gets the speed value for your own car with
+    //"a=i/t".
+    dn = i - p;
+    t = dn / s;
+    a = i / t;
+    //Finally, the time of collision and the maximum speed are printed.,
+    printf("As the collison will occur after %f seconds, the maximum speed of your car is %f.\n", t, a);
+
+}
