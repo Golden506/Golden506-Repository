@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <math.h>
+#include <string.h>
+
+int main(void)
+{
+    string s;
+    int l;
+    int i;
+    int bp;
+    s = get_string("Input text and have it reversed: \n");
+    l = strlen(s);
+    for(i=0; i<l; i++)
+    {
+        printf("%c", s[i]);
+    }
+    printf(" backwards is ");
+    bp=l;
+    for(bp=l-1;bp>=0;bp--)
+    {
+        printf("%c", s[bp]);
+    }
+    printf("\n");
+}
