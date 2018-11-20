@@ -1,3 +1,4 @@
+//Reverses a given string.
 #include <stdio.h>
 #include <cs50.h>
 #include <math.h>
@@ -5,21 +6,24 @@
 
 int main(void)
 {
+    //Variables for the initial string to be reversed, the length of said string, and a standard integer for use in for loops.
     string s;
     int l;
     int i;
-    int bp;
     s = get_string("Input text and have it reversed: \n");
+   //Gets the length of the string and stores it in a variable.
     l = strlen(s);
+    //Prints out the original string char by char.
     for(i=0; i<l; i++)
     {
         printf("%c", s[i]);
     }
+    //Filler text.
     printf(" backwards is ");
-    bp=l;
-    for(bp=l-1;bp>=0;bp--)
+    //Uses a system similar to the previous loop, but reversed, to print out each character from right to left.
+    for(l=l-1;l>=0;l--)
     {
-        printf("%c", s[bp]);
+        printf("%c", s[l]);
     }
     printf("\n");
 }
