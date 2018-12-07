@@ -1,0 +1,69 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+int main(int argc, string argv[])
+{
+    int i;
+    int length;
+    char c;
+    string plaintext;
+    if(argc == 2)
+    {
+        int input = atoi(argv[1]);
+        if(input > 26)
+        {
+            input = input % 26;
+        }
+        if(input > 0)
+        {
+            plaintext = get_string("Input Plaintext: \n");
+            length = strlen(plaintext);
+            printf("ciphertext: ");
+            for(i=0; i < length; i++)
+            {
+                if(isalpha(plaintext[i]))
+                {
+                    if(islower(plaintext[i]))
+                    {
+                        c = plaintext[i];
+                        c = c+input;
+                        c=c-22;
+                        while(c > 100)
+                        {
+                            c = c-26;
+                        }
+                    }
+                    if(isupper(plaintext[i]))
+                    {
+                        c = plaintext[i];
+                        c = c+input;
+                        c = c-22;
+                        if(c > 68)
+                        {
+                            c = c-26;
+                        }
+                    }
+                    printf("%c", c+22);
+                }
+                else
+                {
+                    printf("%c", plaintext[i]);
+                }
+            }
+            printf("\n");
+        }
+        else
+        {
+            printf("Please provide a single non-negative integer.\n");
+            return 1;
+        }
+    }
+    else
+    {
+        printf("Please provide a single non-negative integer.\n");
+        return 1;
+    }
+    return 0;
+}
