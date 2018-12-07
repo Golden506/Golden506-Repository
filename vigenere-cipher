@@ -1,0 +1,83 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+int main(int argc, string argv[])
+{
+    int i;
+    int k;
+    int alpha = 0;
+    int length;
+    int length2;
+    string arg = argv[1];
+    string plaintext;
+    char key;
+    int debug;
+    int addvar;
+    int addvar2;
+    if(argc == 2)
+    {
+        length = strlen(arg);
+        for(i = 0; i < length; i++)
+        {
+            if(isalpha(arg[i]))
+            {
+                alpha++;
+            }
+            if(arg[i] < 97)
+            {
+                arg[i] = arg[i] + 32;
+            }
+        }
+        if(alpha == length)
+        {
+            plaintext = get_string("Input Plaintext: \n");
+            length2 = strlen(plaintext);
+            printf("ciphertext: ");
+            for(i = 0, k = 0;i < length2; i++)
+            {
+                if(k>=length)
+                {
+                   k = k % length;
+                }
+                key = arg[k];
+                if(isalpha(plaintext[i]))
+                {
+                    addvar = key - 97;
+                    addvar2 = plaintext[i] + addvar;
+                    if(islower(plaintext[i]))
+                    {
+                        if(addvar2 > 122)
+                        {
+                            addvar = addvar - 26;
+                        }
+                    }
+                    if(isupper(plaintext[i]))
+                    {
+                        if(addvar2 > 90)
+                        {
+                            addvar = addvar - 26;
+                        }
+                    }
+                    debug = plaintext[i];
+                    plaintext[i]=plaintext[i] + addvar;
+                    debug = plaintext[i];
+                    k++;
+                }
+                printf("%c", plaintext[i]);
+            }
+            printf("\n");
+        }
+        else
+        {
+            printf("Please provide a single string of alphabetical characters.\n");
+            return 1;
+        }
+    }
+    else
+    {
+        printf("Please provide a single string of alphabetical characters.\n");
+        return 1;
+    }
+}
