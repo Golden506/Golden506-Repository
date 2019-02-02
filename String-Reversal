@@ -3,6 +3,7 @@
 #include <cs50.h>
 #include <math.h>
 #include <string.h>
+#include <ctype.h>
 
 int main(void)
 {
@@ -10,20 +11,28 @@ int main(void)
     string s;
     int l;
     int i;
-    s = get_string("Input text and have it reversed: \n");
-   //Gets the length of the string and stores it in a variable.
+    //Gets input string
+    do
+    {
+        s = get_string("Input text and have it reversed: \n");
+    }
+    while(strcmp(s, "") == 0);
+    //Takes the string and determines its length
     l = strlen(s);
+    //Prints the opening quotation mark for the original string.
+    printf("\"");
     //Prints out the original string char by char.
     for(i=0; i<l; i++)
     {
         printf("%c", s[i]);
     }
-    //Filler text.
-    printf(" backwards is ");
-    //Uses a system similar to the previous loop, but reversed, to print out each character from right to left.
-    for(l=l-1;l>=0;l--)
+    //Prints the closing quotation mark for the original string, some text to make it look nice, and then the opening quote of the reversed string.
+    printf("\"backwards is \"");
+    //Uses a system similar to the previous loop, but reversed, to print out each character from right to left(via starting at the end of the string length and counting backwards).
+    for(i=l;i>=0;i--)
     {
-        printf("%c", s[l]);
+        printf("%c", s[i]);
     }
-    printf("\n");
+    //Prints the closing quotation mark for the reversed string and then a new line.
+    printf("\"\n");
 }
